@@ -5,7 +5,7 @@ juliazero-bucket manifests for [Scoop](https://scoop.sh), the Windows command-li
 How do I install these manifests?
 ---------------------------------
 
-To add this bucket, run `scoop bucket add https://github.com/juliazero/juliazero-bucket`. To install, do `scoop install <manifest>`.
+To add this bucket, run `scoop bucket add sbbj https://github.com/juliazero/sbbj`. To install, do `scoop install <manifest>`.
 
 How do I contribute new manifests?
 ----------------------------------
