@@ -21,9 +21,10 @@
         "$subdir = Get-ChildItem \"$dir\\net*\" -Directory | Select-Object -First 1",
         "Move-Item \"$($subdir.FullName)\\*\" $dir -Force",
         "Remove-Item $subdir.FullName -Recurse -Force",
-        "if (Test-Path -PathType Container \"$persist_dir\\App.txt\") { Remove-Item \"$persist_dir\\App.txt\" } # removes folder App.txt if exists",
-        "if (!(Test-Path \"$persist_dir\\App.txt\")) { New-Item \"$dir\\App.txt\" | Out-Null } # creates config file App.txt if doesn't exist",
-        "$configPath = \"$persist_dir\\App.txt\"",
+        "if (!(Test-Path \"$dir\\App.txt\") -and !(Test-Path \"$persist_dir\\App.txt\")) { New-Item \"$dir\\App.txt\" -ItemType File | Out-Null }"
+    ],
+    "post_install": [
+        "$configPath = \"$dir\\App.txt\"",
         "$lines = @()",
         "if (Test-Path $configPath) { $lines = Get-Content $configPath | Where-Object { $_ -notmatch '^CheckForUpdates\\s*:' } }",
         "$lines += 'CheckForUpdates:false;'",
